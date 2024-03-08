@@ -2,7 +2,7 @@
 
         <h1>Tarefas</h1>
         <new-task @taskAdded="addTask($event)"></new-task>
-        <task-grid :tasks="tasks"></task-grid>
+        <task-grid :tasks="tasks" @taskDeleted="deleteTask"></task-grid>
 </template>
 
 <script>
@@ -30,6 +30,9 @@ export default {
       }else{
         alert('Tarefa já existe ou é vazia')
       }
+    },
+    deleteTask(id){
+      this.tasks.splice(id, 1)
     }
   }
   
