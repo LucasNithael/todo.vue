@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="task-grid" v-if="tasks.length">
-      <task-uni v-for="(task, id) in tasks" :key="task.name" :task="task" @taskDeleted="$emit('taskDeleted', id)"></task-uni>
+      <task-uni v-for="(task, id) in tasks" :key="task.name"
+       :task="task" @taskDeleted="$emit('taskDeleted', id)"
+       @taskStateChanged="$emit('taskStateChanged', id)"></task-uni>
     </div>
     <p v-else class="no-task">
         Sem tarefas :)

@@ -2,7 +2,10 @@
 
         <h1>Tarefas</h1>
         <new-task @taskAdded="addTask($event)"></new-task>
-        <task-grid :tasks="tasks" @taskDeleted="deleteTask"></task-grid>
+        <task-grid 
+        :tasks="tasks" 
+        @taskDeleted="deleteTask" 
+        @taskStateChanged="toggleTaskState" />
 </template>
 
 <script>
@@ -33,6 +36,10 @@ export default {
     },
     deleteTask(id){
       this.tasks.splice(id, 1)
+    },
+    toggleTaskState(i){
+      console.log(i, this.tasks[i])
+      this.tasks[i].pending = !this.tasks[i].pending
     }
   }
   
