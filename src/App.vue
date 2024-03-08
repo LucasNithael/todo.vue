@@ -1,27 +1,38 @@
 <template>
 
         <h1>Tarefas</h1>
+        <new-task @taskAdded="addTask($event)"></new-task>
         <task-grid :tasks="tasks"></task-grid>
-
 </template>
 
 <script>
 import TaskGrid from './components/TaskGrid.vue';
+import NewTask from './components/NewTask.vue';
 
 export default {
-  components: {TaskGrid},
+  components: {TaskGrid, NewTask},
   data(){
     return {
-      tasks:[
-        {name: 'Limpar quarto', pending: true},
-        {name: 'Lavar a louça', pending: false},
-        {name: 'Limpar quarto', pending: true},
-        {name: 'Lavar a louça', pending: false},
-        {name: 'Limpar quarto', pending: true},
-        {name: 'Lavar a louça', pending: false},
-      ]
+      tasks:[]
+    }
+  },
+  methods:{
+    addTask(task){
+      const sameName = t => t.name == task.name
+      const reallyNew = this.tasks.filter(sameName).length == 0
+
+      if(reallyNew && task.name != ''){
+  
+        this.tasks.push({
+          name: task.name,
+          pending: task.pending || true
+        })
+      }else{
+        alert('Tarefa já existe ou é vazia')
+      }
     }
   }
+  
 }
 </script>
 
