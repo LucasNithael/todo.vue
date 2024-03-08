@@ -23,18 +23,17 @@ export default {
 <style>
 .task {
     box-sizing: border-box;
-    width: 350px;
-    height: 150px;
+    width: 250px;
+    height: 100px;
     padding: 10px;
     border-radius: 8px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 300;
     cursor: pointer;
     user-select: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 5px;
 }
 
 .pending {
